@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const customers = [
-        { name: 'John Doe', email: 'ohndea2118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'Shelby Gook', email: 'shelbygook44@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'Robert Badr', email: 'robertbadr118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'John Doe', email: 'ohndea2118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'Shelby Gook', email: 'shelbygook44@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'Robert Badr', email: 'robertbadr118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'John Doe', email: 'ohndea2118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
-        { name: 'Shelby Gook', email: 'shelbygook44@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: 'https://via.placeholder.com/40' },
+        { name: 'John Doe', email: 'ohndea2118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'Shelby Gook', email: 'shelbygook44@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'Robert Badr', email: 'robertbadr118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'John Doe', email: 'ohndea2118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'Shelby Gook', email: 'shelbygook44@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'Robert Badr', email: 'robertbadr118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'John Doe', email: 'ohndea2118@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
+        { name: 'Shelby Gook', email: 'shelbygook44@gmail.com', paymentMethod: '****1234', totalSpend: '$0.00 USD', payments: '$0.00 USD', avatar: './../public/images/avatar.jpg' },
     ];
 
     const customerList = document.getElementById('customerList');
