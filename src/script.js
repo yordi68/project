@@ -103,10 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // const sidebar = document.getElementById("sidebar");
-    // const closeMenu = document.getElementById("close-menu");
 
-    // closeMenu.addEventListener("click", function () {
-    //     sidebar.classList.add("-translate-x-full");
-    // });
+    const sidebar = document.getElementById('sidebar');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const menuToggle = document.getElementById('menu-toggle');
+
+    closeMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('hidden');
+    });
+
+    menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('hidden');   
+
+    });
 });
