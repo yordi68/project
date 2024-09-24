@@ -220,128 +220,223 @@
         </div>
         
         <!-- Modal Form -->
-        <form class="mt-4 space-y-4">
-            <!-- Company -->
-            <div>
-                <label class="block text-gray-700 py-1">Company</label>
-                <input class="border rounded w-full py-2 px-4" placeholder="abc company">
-            </div>
+        <form id="customerForm" class="mt-4 space-y-4">
+          <!-- Company -->
+          <div>
+            <label class="block text-gray-700 py-1">Company</label>
+            <input
+              id="company"
+              class="border rounded w-full py-2 px-4 focus:border-blue-400 hover:border-blue-400"
+              placeholder="abc company"
+            />
+            <span
+              class="error-message text-red-500 text-[12px] mt-2"
+              id="companyError"
+            ></span>
+          </div>
 
-            <!-- First and Last Name -->
+          <!-- First and Last Name -->
+          <div class="flex flex-row gap-4">
+            <div class="w-full">
+              <label class="block text-gray-700 py-1">First Name</label>
+              <input
+                id="firstName"
+                class="border rounded w-full py-2 px-4 focus:border-blue-400 hover:border-blue-400"
+                placeholder="First Name"
+              />
+              <span
+                class="error-message text-red-500 text-[12px] mt-2"
+                id="firstNameError"
+              ></span>
+            </div>
+            <div class="w-full">
+              <label class="block text-gray-700 py-1">Last Name</label>
+              <input
+                id="lastName"
+                class="border rounded w-full py-2 px-4 focus:border-blue-400 hover:border-blue-400"
+                placeholder="Last Name"
+              />
+              <span
+                class="error-message text-red-500 text-[12px] mt-2"
+                id="lastNameError"
+              ></span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-gray-700 py-1">Email</label>
+            <input
+              id="email"
+              class="border rounded w-full py-2 px-4 focus:border-blue-400 hover:border-blue-400"
+              placeholder="example@gmail.com"
+              type="email"
+            />
+            <span
+              class="error-message text-red-500 text-[12px] mt-2"
+              id="emailError"
+            ></span>
+          </div>
+
+          <!-- Phone Numbers -->
+          <div class="flex flex-row gap-4">
+            <div class="w-1/4">
+              <label class="block text-gray-700 py-1">Phone 1</label>
+              <input
+                id="phone1"
+                class="border rounded w-full py-2 px-4 focus:border-blue-400 hover:border-blue-400"
+                placeholder="+1"
+              />
+              <span
+                class="error-message text-red-500 text-[12px] mt-2"
+                id="phone1Error"
+              ></span>
+            </div>
+            <div class="w-3/4">
+              <label class="block text-gray-700 py-1">Phone 2</label>
+              <input
+                id="phone2"
+                class="border rounded w-full py-2 px-4 focus:border-blue-400 hover:border-blue-400"
+                placeholder="555-456-1"
+              />
+              <span
+                class="error-message text-red-500 text-[12px] mt-2"
+                id="phone2Error"
+              ></span>
+            </div>
+          </div>
+
+          <!-- Add Payment Method -->
+          <div class="flex items-center justify-between">
+            <label class="block text-gray-700 py-1">Add Payment Method</label>
+            <label class="switch" id="togglePaymentMethod">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+
+            <span
+              class="error-message text-red-500 text-[12px] mt-2"
+              id="paymentMethodError"
+            ></span>
+          </div>
+
+          <!-- Payment Method Options (conditional) -->
+          <div id="paymentOptions" class="hidden">
+            <label class="block text-gray-700 py-1">Payment Method</label>
             <div class="flex flex-row gap-4">
-                <div class="w-full">
-                    <label class="block text-gray-700 py-1">First Name</label>
-                    <input class="border rounded w-full py-2 px-4" placeholder="First Name">
-                </div>
-                <div class="w-full">
-                    <label class="block text-gray-700 py-1">Last Name</label>
-                    <input class="border rounded w-full py-2 px-4" placeholder="Last Name">
-                </div>
+              <div class="flex items-center">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="Credit Card"
+                  id="creditCardRadio"
+                  checked
+                />
+                <label class="ml-2 text-gray-700">Credit Card</label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="Bank/ACH"
+                  id="bankACHRadio"
+                />
+                <label class="ml-2 text-gray-700">Bank/ACH</label>
+              </div>
             </div>
+            <span
+              class="error-message text-red-500 text-[12px] mt-2"
+              id="paymentDetailsError"
+            ></span>
+          </div>
 
-            <!-- Email -->
-            <div>
-                <label class="block text-gray-700 py-1">Email</label>
-                <input class="border rounded w-full py-2 px-4" placeholder="example@gmail.com">
-            </div>
-
-            <!-- Phone Numbers -->
+          <!-- Credit Card Details (conditional) -->
+          <div id="creditCardDetails" class="hidden space-y-4">
             <div class="flex flex-row gap-4">
-                <div class="w-1/4">
-                    <label class="block text-gray-700 py-1">Phone 1</label>
-                    <input class="border rounded w-full py-2 px-4" placeholder="+1">
-                </div>
-                <div class="w-3/4">
-                    <label class="block text-gray-700 py-1">Phone 2</label>
-                    <input class="border rounded w-full py-2 px-4" placeholder="555-456-1">
-                </div>
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Card #</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="1234 5678 9101 1121"
+                />
+              </div>
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Name on card</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="John Doe"
+                />
+              </div>
             </div>
-
-
-            <!-- Add Payment Method -->
-            <div class="flex items-center justify-between">
-                <label class="block text-gray-700 py-1">Add Payment Method</label>
-                <label class="switch" id="togglePaymentMethod">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
+            <div class="flex flex-row gap-4">
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">CVV</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="123"
+                />
+              </div>
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Expiry</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="01/26"
+                />
+              </div>
             </div>
+          </div>
 
-            <!-- Payment Method Options (conditional) -->
-            <div id="paymentOptions" class="hidden">
-                <label class="block text-gray-700 py-1">Payment Method</label>
-                <div class="flex flex-row gap-4">
-                    <div class="flex items-center">
-                        <input type="radio" name="paymentMethod" value="Credit Card" id="creditCardRadio" checked>
-                        <label class="ml-2 text-gray-700">Credit Card</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="radio" name="paymentMethod" value="Bank/ACH" id="bankACHRadio">
-                        <label class="ml-2 text-gray-700">Bank/ACH</label>
-                    </div>
-                </div>
+          <!-- Bank/ACH Details (conditional) -->
+          <div id="bankACHDetails" class="hidden space-y-4">
+            <div class="flex flex-row gap-4">
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Bank Name</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="Bank of US"
+                />
+              </div>
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Routing #</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="123456789"
+                />
+              </div>
             </div>
+            <div class="flex flex-row gap-4">
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Account #</label>
+                <input
+                  class="border rounded w-full py-2 px-4"
+                  placeholder="9876543210"
+                />
+              </div>
+              <div class="w-full">
+                <label class="block text-gray-700 py-1">Account Type</label>
+                <select class="border rounded w-full py-2 px-4">
+                  <option value="current">Current</option>
+                  <option value="savings">Savings</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
-            <!-- Credit Card Details (conditional) -->
-            <div id="creditCardDetails" class="hidden space-y-4">
-                <div class="flex flex-row gap-4">
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Card #</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="1234 5678 9101 1121">
-                    </div>
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Name on card</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="John Doe">
-                    </div>
-                </div>
-                <div class="flex flex-row gap-4">
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">CVV</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="123">
-                    </div>
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Expiry</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="01/26">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bank/ACH Details (conditional) -->
-            <div id="bankACHDetails" class="hidden space-y-4">
-                <div class="flex flex-row gap-4">
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Bank Name</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="Bank of US">
-                    </div>
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Routing #</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="123456789">
-                    </div>
-                </div>
-                <div class="flex flex-row gap-4">
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Account #</label>
-                        <input class="border rounded w-full py-2 px-4" placeholder="9876543210">
-                    </div>
-                    <div class="w-full">
-                        <label class="block text-gray-700 py-1">Account Type</label>
-                        <select class="border rounded w-full py-2 px-4">
-                            <option value="current">Current</option>
-                            <option value="savings">Savings</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add Customer Button -->
-            <div class="w-full flex items-center justify-center">
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded mt-4 w-[40%]">Add Customer</button>
-            </div>
+          <!-- Add Customer Button -->
+          <div class="w-full flex items-center justify-center">
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded mt-4 w-[40%]"
+            >
+              Add Customer
+            </button>
+          </div>
         </form>
     </div>
 </div>
 
   <script src="script.js"></script>
+  <script src="validation.js"></script>
 
    
   </body>
