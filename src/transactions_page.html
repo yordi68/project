@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .tab-active {
+        border-bottom: 2px solid #6366f1;
+        color: #6366f1;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans leading-normal tracking-normal">
+    <div class="flex min-h-screen">
+      <aside
+        id="sidebar"
+        class="min-h-screen shadow-md xl:flex flex-col items-center bg-white transition-all duration-300 w-60 xl:w-72"
+      >
+        <div
+          id="sidebar-header"
+          class="flex items-center justify-between w-full h-32 border-b border-white p-4 gap-4"
+        >
+          <h1
+            class="text-xl font-bold text-gray-800 flex gap-2 xl:gap-6 items-center xl:justify-center w-full"
+          >
+            <svg
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M41.9998 21.0966L42 21C42 9.40202 32.598 0 21 0C10.1757 0 1.26409 8.18954 0.123364 18.7105L11.79 24.4142C12.3617 23.6184 13.2953 23.1 14.35 23.1C15.2427 23.1 16.0487 23.4714 16.6219 24.068L25.9002 16.4134C25.9198 14.6906 27.3225 13.3 29.05 13.3C30.6572 13.3 31.9833 14.5037 32.1759 16.0587L41.9998 21.0966ZM17.4857 25.9482L26.5994 18.4294C27.1769 19.1434 28.0601 19.6 29.05 19.6C30.1912 19.6 31.1907 18.9931 31.7433 18.0845L41.8775 23.2815C40.7404 33.8063 31.8271 42 21 42C9.40202 42 0 32.598 0 21C0 20.9588 0.000118391 20.9177 0.000354851 20.8766L11.2016 26.3528C11.2559 28.0449 12.6447 29.4 14.35 29.4C16.0897 29.4 17.5 27.9897 17.5 26.25C17.5 26.1482 17.4952 26.0475 17.4857 25.9482Z"
+                fill="#605BFF"
+              />
+            </svg>
+
+            <span>H4L</span>
+          </h1>
+          <button id="close-menu" class="xl:hidden p-2" aria-label="Close Menu">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="mt-4 w-full">
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+              />
+            </svg>
+
+            <span>Dashboard</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors bg-gray-100 text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+              />
+            </svg>
+
+            <span>Transactions</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-600 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+
+            <span>Customers</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+              />
+            </svg>
+
+            <span>Upload</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+              />
+            </svg>
+            <span>Invoice</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+              />
+            </svg>
+            <span>Reporting</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+
+            <span>Settings</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1 container p-4 lg:p-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold gap-4 flex items-center">
+            <span
+              class="text-2xl font-bold mr-2 xl:hidden cursor-pointer"
+              id="menu-toggle"
+              >&#9776;</span
+            >
+            Transactions
+          </h2>
+        </div>
+
+
+        <!-- Tabs -->
+        <div class="mb-4 flex border-b">
+          <button id="tab1" class="tab-button px-6 py-2 tab-active">
+            Transaction History
+          </button>
+          <button id="tab2" class="tab-button px-6 py-2">
+            Transaction Review
+          </button>
+        </div>
+
+
+        <!-- Filtering buttons -->
+         <div class="flex flex-wrap items-center gap-2 mb-2">
+              <input
+                type="text"
+                id="search"
+                placeholder="Search name, email, phone etc"
+                class="w-full sm:w-auto md:w-1/2 lg:w-1/3 px-4 py-2 border border-gray-300 rounded-md outline-none focus:border-blue-500 hover:border-blue-300"
+              />
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                All
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                Top customer
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                Recent customer
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                First-time customer
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                Repeat customer
+              </button>
+            </div>
+            <div class="flex justify-end space-x-2 md:space-x-6 mb-2">
+              <button
+                class="px-4 lg:px-6 py-2 flex gap-2 bg-white border border-gray-200 rounded-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 9V3h12v6M6 18.75H4.5A2.25 2.25 0 0 1 2.25 16.5V12A2.25 2.25 0 0 1 4.5 9.75H19.5A2.25 2.25 0 0 1 21.75 12v4.5a2.25 2.25 0 0 1-2.25 2.25H18M18 15.75v4.5H6v-4.5h12Zm-3 1.5H9v-3h6v3Z"
+                  />
+                </svg>
+                <span>Print</span>
+              </button>
+              <button
+                class="px-4 lg:px-6 py-2 bg-white border flex gap-2 border-gray-200 rounded-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 13.5v4.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 18V13.5M7.5 10.5 12 15l4.5-4.5M12 15V3.75"
+                  />
+                </svg>
+
+                <span>Download</span>
+              </button>
+
+                <select
+  class="border border-gray-300 rounded-md py-2 px-4 bg-white  hover:border-blue-300 outline-none focus:border-blue-500"
+>
+  <option value="last-7-days">Last 7 Days</option>
+  <option value="last-month">Last Month</option>
+  <option value="last-6-month">Last 6 Months</option>
+</select>
+
+              </div>
+
+
+        <div id="content-container">
+
+          <div id="transaction-history-content" class="tab-content">   
+
+               <div id="transaction-history-table" class="overflow-x-auto">
+              <table
+                class="min-w-full bg-white border border-gray-200 rounded-lg"
+              >
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Name</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Email</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Payment method
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Total spend
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Date</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="transaction-history-body"></tbody>
+              </table>
+            </div>
+            </div>
+
+    
+
+          <div id="transaction-review-content" class="tab-content hidden">
+            <div id="transaction-review-table" class="overflow-x-auto">
+              <table
+                class="min-w-full bg-white border border-gray-200 rounded-lg"
+              >
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Name</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Email</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Payment method
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Total spend
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Date</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="transaction-review-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+
+
+
+
+          <!-- Pagination -->
+            <div class="flex justify-between items-center mt-4">
+              <p class="text-gray-600"></p>
+              <div class="flex items-center space-x-1">
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  3
+                </button>
+                <span class="px-3 py-1 text-gray-600">...</span>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  5
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  &gt;
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="transactions_script.js"></script>
+  </body>
+</html>
