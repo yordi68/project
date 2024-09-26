@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addCustomerBtn = document.getElementById('addCustomerBtn');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const sidebarDrawer = document.getElementById('sidebarDrawer');
-
+    const overlay = document.getElementById('overlay');
 
 
     const modal = document.getElementById('addCustomerModal');
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate customer list
     customers.forEach((customer) => {
         const row = document.createElement('tr');
-        row.classList.add('border-b', 'hover:bg-gray-50', 'transition');
+        row.classList.add('border-b', 'hover:bg-gray-50', 'transition', 'cursor-pointer');
         row.innerHTML = `
       <td class="p-4 flex items-center gap-3">
         <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded" />
@@ -48,14 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
       <td class="p-4"><span class="cursor-pointer text-gray-600">⋮</span></td>
     `;
         customerList.appendChild(row);
+
+        row.addEventListener('click', () => {
+            overlay.classList.remove('hidden');
+            document.getElementById('customerDetailsModal').classList.remove('hidden');
+            document.getElementById('customerDetailsModal').classList.add('flex');
+        });
     });
+
+   
 
     // Open and close modal
     addCustomerBtn.addEventListener('click', () => {
+        overlay.classList.remove('hidden');
         addCustomerModal.classList.remove('hidden');
     });
 
     closeModalButton.addEventListener('click', () => {
+        overlay.classList.add('hidden');
         addCustomerModal.classList.add('hidden');
     });
 
@@ -117,3 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 });
+
+
+
+function closeCustomerDetailsModal() {
+    overlay.classList.add('hidden');
+    document.getElementById('customerDetailsModal').classList.remove('flex');
+    document.getElementById('customerDetailsModal').classList.add('hidden');
+}
