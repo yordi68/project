@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transactions</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-   <style>
-    
-    .tab-active {
-       border-bottom: 2px solid #6366f1;
+    <style>
+      .tab-active {
+        border-bottom: 2px solid #6366f1;
         color: #6366f1;
-    }
-
-    
-   
-  </style>
-</head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-
-  <!-- Main layout with sidebar and content -->
-  <div class="flex min-h-screen">
-    
-   <!-- Sidebar done -->
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans leading-normal tracking-normal">
+    <div class="flex min-h-screen">
       <aside
         id="sidebar"
         class="min-h-screen shadow-md xl:flex flex-col items-center bg-white transition-all duration-300 w-60 xl:w-72"
       >
         <div
           id="sidebar-header"
-          class="flex items-center justify-between w-full h-32 border-b border-gray-200 p-4 gap-4"
+          class="flex items-center justify-between w-full h-32 border-b border-white p-4 gap-4"
         >
           <h1
             class="text-xl font-bold text-gray-800 flex gap-2 xl:gap-6 items-center xl:justify-center w-full"
@@ -94,7 +86,7 @@
 
           <a
             href="#"
-            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+            class="flex items-center px-6 py-4 transition-colors bg-gray-100 text-purple-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +108,7 @@
 
           <a
             href="#"
-            class="flex items-center px-6 py-4 transition-colors bg-gray-100 text-purple-600"
+            class="flex items-center px-6 py-4 transition-colors text-gray-600 hover:bg-gray-100 hover:text-purple-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -229,147 +221,215 @@
         </nav>
       </aside>
 
-    <!-- Main content -->
-    <div class="flex-1 p-4 lg:p-6">
-      <h1 class="text-3xl font-semibold mb-4">
-         <span
-            class="text-2xl font-bold mr-2  cursor-pointer"
-            id="menu-toggle"
-            >&#9776;</span
-          >
-        Transactions
-      </h1>
-
-      <!-- Tabs -->
-      <div class="mb-4 flex border-b">
-        <button id="tab1" class="tab-button px-6 py-2 tab-active">Transaction History</button>
-        <button id="tab2" class="tab-button px-6 py-2 ">Transaction Review</button>
-      </div>
-
-      <!-- Search bar and filters -->
-      <div class="flex justify-between items-center mb-4">
-        <input type="text" id="search" placeholder="Search name, email, phone etc" class="px-4 py-2 border border-gray-300 rounded-md w-1/3">
-        <div class="space-x-2">
-          <button class="px-4 py-2 bg-gray-100 rounded-md">Top customer</button>
-          <button class="px-4 py-2 bg-gray-100 rounded-md">Recent customer</button>
-          <button class="px-4 py-2 bg-gray-100 rounded-md">First time customer</button>
-          <button class="px-4 py-2 bg-gray-100 rounded-md">Repeat customer</button>
+      <!-- Main Content -->
+      <div class="flex-1 container p-4 lg:p-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold gap-4 flex items-center">
+            <span
+              class="text-2xl font-bold mr-2 xl:hidden cursor-pointer"
+              id="menu-toggle"
+              >&#9776;</span
+            >
+            Transactions
+          </h2>
         </div>
-        <div class="space-x-2">
-          <button class="px-4 py-2 bg-gray-100 rounded-md">Print</button>
-          <button class="px-4 py-2 bg-gray-100 rounded-md">Download</button>
+
+
+        <!-- Tabs -->
+        <div class="mb-4 flex border-b">
+          <button id="tab1" class="tab-button px-6 py-2 tab-active">
+            Transaction History
+          </button>
+          <button id="tab2" class="tab-button px-6 py-2">
+            Transaction Review
+          </button>
         </div>
-      </div>
 
-      <!-- Tabs content container -->
-      <div id="content-container">
-        <!-- Transaction History Content (Default Tab) -->
-        <div id="transaction-history-content" class="tab-content">
-          <!-- Table -->
-          <div id="transaction-table" class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-300 rounded-md">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th class="py-3 px-6 text-left">Name</th>
-                  <th class="py-3 px-6 text-left">Email</th>
-                  <th class="py-3 px-6 text-left">Payment method</th>
-                  <th class="py-3 px-6 text-left">Total spend</th>
-                  <th class="py-3 px-6 text-left">Date</th>
-                  <th class="py-3 px-6 text-left">Action</th>
-                </tr>
-              </thead>
-              <tbody id="transaction-body">
-                <!-- Data will be injected here by JavaScript -->
-              </tbody>
-            </table>
 
-            <!-- Pagination -->
-            <div class="flex justify-between items-center mt-4">
-              <p>Showing page <span id="current-page">1</span> of 10</p>
-              <div class="flex space-x-2">
-                <button class="px-3 py-1 bg-gray-200 rounded-md">&laquo;</button>
-                <button class="px-3 py-1 bg-gray-200 rounded-md">1</button>
-                <button class="px-3 py-1 bg-gray-200 rounded-md">2</button>
-                <button class="px-3 py-1 bg-gray-200 rounded-md">3</button>
-                <button class="px-3 py-1 bg-gray-200 rounded-md">&raquo;</button>
+        <!-- Filtering buttons -->
+         <div class="flex flex-wrap items-center gap-2 mb-2">
+              <input
+                type="text"
+                id="search"
+                placeholder="Search name, email, phone etc"
+                class="w-full sm:w-auto md:w-1/2 lg:w-1/3 px-4 py-2 border border-gray-300 rounded-md outline-none focus:border-blue-500 hover:border-blue-300"
+              />
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                All
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                Top customer
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                Recent customer
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                First-time customer
+              </button>
+              <button
+                class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:text-white hover:bg-blue-500 transition-all"
+              >
+                Repeat customer
+              </button>
+            </div>
+            <div class="flex justify-end space-x-2 md:space-x-6 mb-2">
+              <button
+                class="px-4 lg:px-6 py-2 flex gap-2 bg-white border border-gray-200 rounded-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 9V3h12v6M6 18.75H4.5A2.25 2.25 0 0 1 2.25 16.5V12A2.25 2.25 0 0 1 4.5 9.75H19.5A2.25 2.25 0 0 1 21.75 12v4.5a2.25 2.25 0 0 1-2.25 2.25H18M18 15.75v4.5H6v-4.5h12Zm-3 1.5H9v-3h6v3Z"
+                  />
+                </svg>
+                <span>Print</span>
+              </button>
+              <button
+                class="px-4 lg:px-6 py-2 bg-white border flex gap-2 border-gray-200 rounded-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 13.5v4.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 18V13.5M7.5 10.5 12 15l4.5-4.5M12 15V3.75"
+                  />
+                </svg>
+
+                <span>Download</span>
+              </button>
+
+                <select
+  class="border border-gray-300 rounded-md py-2 px-4 bg-white  hover:border-blue-300 outline-none focus:border-blue-500"
+>
+  <option value="last-7-days">Last 7 Days</option>
+  <option value="last-month">Last Month</option>
+  <option value="last-6-month">Last 6 Months</option>
+</select>
+
               </div>
+
+
+        <div id="content-container">
+
+          <div id="transaction-history-content" class="tab-content">   
+
+               <div id="transaction-history-table" class="overflow-x-auto">
+              <table
+                class="min-w-full bg-white border border-gray-200 rounded-lg"
+              >
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Name</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Email</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Payment method
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Total spend
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Date</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="transaction-history-body"></tbody>
+              </table>
+            </div>
+            </div>
+
+    
+
+          <div id="transaction-review-content" class="tab-content hidden">
+            <div id="transaction-review-table" class="overflow-x-auto">
+              <table
+                class="min-w-full bg-white border border-gray-200 rounded-lg"
+              >
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Name</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Email</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Payment method
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Total spend
+                    </th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">Date</th>
+                    <th class="py-3 px-6 text-left whitespace-nowrap">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="transaction-review-body"></tbody>
+              </table>
             </div>
           </div>
-        </div>
 
-        <!-- Transaction Review Content -->
-        <div id="transaction-review-content" class="tab-content hidden">
-          <h2 class="text-xl font-semibold mb-4">Transaction Review</h2>
-          <p>Here you can review individual transactions.</p>
+
+
+
+
+          <!-- Pagination -->
+            <div class="flex justify-between items-center mt-4">
+              <p class="text-gray-600"></p>
+              <div class="flex items-center space-x-1">
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  3
+                </button>
+                <span class="px-3 py-1 text-gray-600">...</span>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  5
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  &gt;
+                </button>
+              </div>
+            </div>
         </div>
       </div>
-
     </div>
 
-  </div>
-
-  <script>
-    // Sample data for the table
-    const transactions = [
-      { name: "John Doe", email: "ohndoe2211@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "10-01-2024" },
-      { name: "Shelby Goode", email: "shelbygoode41@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "12-01-2024" },
-      { name: "Robert Bacins", email: "robertbacins4128@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "12-01-2024" },
-      { name: "John Carilo", email: "johncarilo1829@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "13-01-2024" },
-      { name: "Adriene Watson", email: "adriene.W@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "15-01-2024" },
-      { name: "Jhon Deo", email: "jhon.deo@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "17-01-2024" },
-      { name: "Bethany Jackson", email: "beth.j@gmail.com", payment: "****1234567", total: "$0.00 USD", date: "19-01-2024" },
-    ];
-
-    // Function to render the table rows
-    function renderTable() {
-      const tableBody = document.getElementById("transaction-body");
-      tableBody.innerHTML = "";
-
-      transactions.forEach((transaction) => {
-        const row = `<tr>
-            <td class="py-2 px-4">${transaction.name}</td>
-            <td class="py-2 px-4">${transaction.email}</td>
-            <td class="py-2 px-4">${transaction.payment}</td>
-            <td class="py-2 px-4">${transaction.total}</td>
-            <td class="py-2 px-4">${transaction.date}</td>
-            <td class="py-2 px-4 text-blue-500 cursor-pointer">View transactions</td>
-          </tr>`;
-        tableBody.insertAdjacentHTML("beforeend", row);
-      });
-    }
-
-    // Tabs functionality
-    const tab1 = document.getElementById("tab1");
-    const tab2 = document.getElementById("tab2");
-
-    tab1.addEventListener("click", function () {
-      // Switch active tab styling
-      tab1.classList.add("tab-active");
-      tab1.classList.remove("tab-inactive");
-      tab2.classList.add("tab-inactive");
-      tab2.classList.remove("tab-active");
-
-      // Display corresponding content
-      document.getElementById("transaction-history-content").classList.remove("hidden");
-      document.getElementById("transaction-review-content").classList.add("hidden");
-    });
-
-    tab2.addEventListener("click", function () {
-      // Switch active tab styling
-      tab2.classList.add("tab-active");
-      tab2.classList.remove("tab-inactive");
-      tab1.classList.add("tab-inactive");
-      tab1.classList.remove("tab-active");
-
-      // Display corresponding content
-      document.getElementById("transaction-history-content").classList.add("hidden");
-      document.getElementById("transaction-review-content").classList.remove("hidden");
-    });
-
-    // Initial table render
-    renderTable();
-  </script>
-  <script src="transactions_page_script.js"></script>
-
-</body>
+    <script src="transactions_script.js"></script>
+  </body>
 </html>
