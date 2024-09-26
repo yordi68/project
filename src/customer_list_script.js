@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('overlay');
 
 
-    const modal = document.getElementById('addCustomerModal');
+    // const modal = document.getElementById('addCustomerModal');
     const closeModalButton = document.getElementById('closeModalButton');
     const togglePaymentMethod = document.getElementById('togglePaymentMethod');
     const paymentOptions = document.getElementById('paymentOptions');
@@ -79,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // Show or hide modal
-    document.getElementById('addCustomerBtn').addEventListener('click', () => {
-        modal.classList.remove('hidden');
-    });
+    // // Show or hide modal
+    // document.getElementById('addCustomerBtn').addEventListener('click', () => {
+    //     modal.classList.remove('hidden');
+    // });
 
-    closeModalButton.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
+    // closeModalButton.addEventListener('click', () => {
+    //     modal.classList.add('hidden');
+    // });
 
     
     // Handle payment method checkbox toggle
