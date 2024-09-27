@@ -184,3 +184,47 @@ const contactsGrid = document.getElementById('contacts-grid');
 contacts.forEach(contact => {
     contactsGrid.innerHTML += createContactHTML(contact);
 });
+
+
+
+
+// Data for transactions
+const transactions = [
+  { description: "ATM cashwithdrawl", category: "Financial services", amount: "$0.00 USD", status: "Done", date: "10-01-2024" },
+  { description: "Shelby Goode", category: "Supermarket", amount: "$0.00 USD", status: "Done", date: "03-02-2024" },
+  { description: "Robert Bacins", category: "Merchandise retail", amount: "$0.00 USD", status: "Done", date: "15-02-2024" },
+  { description: "John Carlo", category: "Financial services", amount: "$0.00 USD", status: "Pending", date: "21-02-2024" },
+  { description: "Adriene Watson", category: "Supermarket", amount: "$0.00 USD", status: "Pending", date: "24-02-2024" },
+  { description: "ATM cashwithdrawl", category: "Medical services", amount: "$0.00 USD", status: "Failed", date: "25-02-2024" },
+  { description: "ATM cashwithdrawl", category: "Medical services", amount: "$0.00 USD", status: "Failed", date: "01-03-2024" }
+];
+
+// Function to render the table
+function renderTable() {
+  const tableBody = document.getElementById("transaction-table-body");
+  tableBody.innerHTML = "";  // Clear any existing content
+
+  transactions.forEach(transaction => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+            <td class="px-6 py-4 whitespace-nowrap">${transaction.description}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${transaction.category}</td>
+            <td class="px-6 py-4 whitespace-nowrap">${transaction.amount}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 inline-flex text-xs leading-5 font-semibold rounded-full ${transaction.status === 'Done' ? 'bg-green-100 text-green-800' :
+        transaction.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+          'bg-red-100 text-red-800'
+      }">
+                    ${transaction.status}
+                </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">${transaction.date}</td>
+        `;
+
+    tableBody.appendChild(row);
+  });
+}
+
+// Call the function to render the table on page load
+document.addEventListener('DOMContentLoaded', renderTable);
