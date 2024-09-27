@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Bulk</title>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-50 font-sans leading-normal tracking-normal">
+    <div class="flex min-h-screen flex-grow">
+      <!-- Sidebar done -->
+      <aside
+        id="sidebar"
+        class="min-h-screen shadow-md xl:flex flex-col items-center bg-white transition-all duration-300 w-60 xl:w-72"
+      >
+        <div
+          id="sidebar-header"
+          class="flex items-center justify-between w-full h-32 border-b border-white p-4 gap-4"
+        >
+          <h1
+            class="text-xl font-bold text-gray-800 flex gap-2 xl:gap-6 items-center xl:justify-center w-full"
+          >
+            <svg
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M41.9998 21.0966L42 21C42 9.40202 32.598 0 21 0C10.1757 0 1.26409 8.18954 0.123364 18.7105L11.79 24.4142C12.3617 23.6184 13.2953 23.1 14.35 23.1C15.2427 23.1 16.0487 23.4714 16.6219 24.068L25.9002 16.4134C25.9198 14.6906 27.3225 13.3 29.05 13.3C30.6572 13.3 31.9833 14.5037 32.1759 16.0587L41.9998 21.0966ZM17.4857 25.9482L26.5994 18.4294C27.1769 19.1434 28.0601 19.6 29.05 19.6C30.1912 19.6 31.1907 18.9931 31.7433 18.0845L41.8775 23.2815C40.7404 33.8063 31.8271 42 21 42C9.40202 42 0 32.598 0 21C0 20.9588 0.000118391 20.9177 0.000354851 20.8766L11.2016 26.3528C11.2559 28.0449 12.6447 29.4 14.35 29.4C16.0897 29.4 17.5 27.9897 17.5 26.25C17.5 26.1482 17.4952 26.0475 17.4857 25.9482Z"
+                fill="#605BFF"
+              />
+            </svg>
+
+            <span>H4L</span>
+          </h1>
+          <button id="close-menu" class="xl:hidden p-2" aria-label="Close Menu">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="mt-4 w-full">
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+              />
+            </svg>
+
+            <span>Dashboard</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+              />
+            </svg>
+
+            <span>Transactions</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-600 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+
+            <span>Customers</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors bg-gray-100 text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+              />
+            </svg>
+
+            <span>Upload</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+              />
+            </svg>
+            <span>Invoice</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+              />
+            </svg>
+            <span>Reporting</span>
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-6 py-4 transition-colors text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 mr-3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+
+            <span>Settings</span>
+          </a>
+        </nav>
+      </aside>
+
+      <div class="flex-1 container p-4 lg:p-6">
+        <!-- Title -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold gap-4 flex items-center">
+            <span
+              class="text-2xl font-bold mr-2 xl:hidden cursor-pointer"
+              id="menu-toggle"
+              >&#9776;</span
+            >
+            Bulk Upload Transactions
+          </h2>
+        </div>
+
+        <!-- Recently Added Section -->
+        <section class="mb-8">
+          <h3 class="text-lg font-medium mb-4">Recently added</h3>
+          <div class="flex space-x-2 md:space-x-4">
+            <!-- File Cards -->
+
+            <div class="flex items-center flex-col gap-2">
+              <div
+                class="w-20 h-20 md:w-28 md:h-28 p-6 bg-white rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  width="36"
+                  height="42"
+                  viewBox="0 0 28 34"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.3333 0.333252H4C3.11594 0.333252 2.2681 0.684441 1.64297 1.30956C1.01785 1.93468 0.666664 2.78253 0.666664 3.66659V30.3333C0.666664 31.2173 1.01785 32.0652 1.64297 32.6903C2.2681 33.3154 3.11594 33.6666 4 33.6666H24C24.8841 33.6666 25.7319 33.3154 26.357 32.6903C26.9821 32.0652 27.3333 31.2173 27.3333 30.3333V10.3333L17.3333 0.333252ZM9.83 23.9833C9.315 24.4666 8.555 24.6833 7.67 24.6833C7.49837 24.6865 7.32675 24.6765 7.15666 24.6532V27.0299H5.66666V20.4699C6.33912 20.3699 7.01854 20.3242 7.69833 20.3333C8.62666 20.3333 9.28666 20.5099 9.73166 20.8649C10.155 21.2016 10.4417 21.7533 10.4417 22.4033C10.44 23.0566 10.2233 23.6083 9.83 23.9833ZM16.175 26.2416C15.475 26.8233 14.41 27.0999 13.1083 27.0999C12.3283 27.0999 11.7767 27.0499 11.4017 26.9999V20.4716C12.0744 20.3738 12.7536 20.3275 13.4333 20.3333C14.695 20.3333 15.515 20.5599 16.155 21.0433C16.8467 21.5566 17.28 22.3749 17.28 23.5499C17.28 24.8216 16.815 25.6999 16.175 26.2416ZM22.3333 21.6166H19.78V23.1349H22.1667V24.3583H19.78V27.0316H18.27V20.3833H22.3333V21.6166ZM17.3333 11.9999H15.6667V3.66659L24 11.9999H17.3333Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+
+              <!-- File Name and 3-Dot Icon -->
+              <div class="relative flex items-center justify-between w-full">
+                <span class="text-xs">Filename.pdf</span>
+                <div class="relative group">
+                  <svg
+                    class="w-6 h-6 text-gray-800 cursor-pointer"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      d="M6 12h.01m6 0h.01m5.99 0h.01"
+                    />
+                  </svg>
+
+                  <!-- Download/Delete Modal on Hover -->
+                  <div
+                    class="absolute right-0 border border-gray-200 w-28 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  >
+                    <button
+                      class="w-full px-4 py-2 text-left text-blue-600 hover:bg-gray-100"
+                      onclick="downloadFile()"
+                    >
+                      Download
+                    </button>
+                    <button
+                      class="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+                      onclick="deleteFile()"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center flex-col gap-2">
+              <div
+                class="w-20 h-20 md:w-28 md:h-28 p-6 bg-white rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  width="30"
+                  height="34"
+                  viewBox="0 0 30 34"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 3.4C0 2.49826 0.364697 1.63346 1.01386 0.995837C1.66303 0.358213 2.54348 0 3.46154 0L22.4008 0L30 7.46413V30.6C30 31.5017 29.6353 32.3665 28.9861 33.0042C28.337 33.6418 27.4565 34 26.5385 34H3.46154C2.54348 34 1.66303 33.6418 1.01386 33.0042C0.364697 32.3665 0 31.5017 0 30.6V3.4ZM4.61538 16.5308V13.6H2.30769V17.4692L4.13769 19.2667L2.30769 21.0641V24.9333H4.61538V22.0025L5.76923 20.8692L6.92308 22.0025V24.9333H9.23077V21.0641L7.40077 19.2667L9.23077 17.4692V13.6H6.92308V16.5308L5.76923 17.6641L4.61538 16.5308ZM11.5385 13.6H13.8462V22.6667H18.4615V24.9333H11.5385V13.6ZM27.6923 13.6H20.7692V20.4H25.3846V22.6667H20.7692V24.9333H27.6923V18.1333H23.0769V15.8667H27.6923V13.6Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+
+              <!-- File Name and 3-Dot Icon -->
+              <div class="relative flex items-center justify-between w-full">
+                <span class="text-xs">Filename.xls</span>
+                <div class="relative group">
+                  <svg
+                    class="w-6 h-6 text-gray-800 cursor-pointer"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      d="M6 12h.01m6 0h.01m5.99 0h.01"
+                    />
+                  </svg>
+
+                  <!-- Download/Delete Modal on Hover -->
+                  <div
+                    class="absolute right-0 border border-gray-200 w-28 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  >
+                    <button
+                      class="w-full px-4 py-2 text-left text-blue-600 hover:bg-gray-100"
+                      onclick="downloadFile()"
+                    >
+                      Download
+                    </button>
+                    <button
+                      class="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+                      onclick="deleteFile()"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center flex-col gap-2">
+              <div
+                class="w-20 h-20 md:w-28 md:h-28 p-6 bg-white rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  width="28"
+                  height="34"
+                  viewBox="0 0 28 34"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.3333 0.333252H4.00001C3.11595 0.333252 2.2681 0.684441 1.64298 1.30956C1.01786 1.93468 0.666672 2.78253 0.666672 3.66659V30.3333C0.666672 31.2173 1.01786 32.0652 1.64298 32.6903C2.2681 33.3154 3.11595 33.6666 4.00001 33.6666H24C24.8841 33.6666 25.7319 33.3154 26.357 32.6903C26.9821 32.0652 27.3333 31.2173 27.3333 30.3333V10.3333L17.3333 0.333252ZM19.3333 30.3333H17L14 18.9999L11 30.3333H8.66667L5 15.3333H7.50001L9.83334 26.6666L12.8333 15.3333H15L18 26.6666L20.3333 15.3333H22.8333L19.3333 30.3333ZM15.6667 11.9999V2.83325L24.8333 11.9999H15.6667Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+
+              <!-- File Name and 3-Dot Icon -->
+              <div class="relative flex items-center justify-between w-full">
+                <span class="text-xs">Filename.docs</span>
+                <div class="relative group">
+                  <svg
+                    class="w-6 h-6 text-gray-800 cursor-pointer"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      d="M6 12h.01m6 0h.01m5.99 0h.01"
+                    />
+                  </svg>
+
+                  <!-- Download/Delete Modal on Hover -->
+                  <div
+                    class="absolute right-0 border border-gray-200 w-28 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  >
+                    <button
+                      class="w-full px-4 py-2 text-left text-blue-600 hover:bg-gray-100"
+                      onclick="downloadFile()"
+                    >
+                      Download
+                    </button>
+                    <button
+                      class="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+                      onclick="deleteFile()"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center flex-col gap-2">
+              <div
+                class="w-20 h-20 md:w-28 md:h-28 p-6 bg-white rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  width="30"
+                  height="34"
+                  viewBox="0 0 30 34"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 3.4C0 2.49826 0.364697 1.63346 1.01386 0.995837C1.66303 0.358213 2.54348 0 3.46154 0L22.4008 0L30 7.46413V30.6C30 31.5017 29.6353 32.3665 28.9861 33.0042C28.337 33.6418 27.4565 34 26.5385 34H3.46154C2.54348 34 1.66303 33.6418 1.01386 33.0042C0.364697 32.3665 0 31.5017 0 30.6V3.4ZM2.30769 13.6H5.76923C6.68729 13.6 7.56774 13.9582 8.21691 14.5958C8.86607 15.2335 9.23077 16.0983 9.23077 17C9.23077 17.9017 8.86607 18.7665 8.21691 19.4042C7.56774 20.0418 6.68729 20.4 5.76923 20.4H4.61538V24.9333H2.30769V13.6ZM20.7692 13.6H27.6923V15.8667H23.0769V22.6667H25.3846V19.2667H27.6923V24.9333H20.7692V13.6ZM13.8462 19.5341V24.9333H11.5385V13.6H13.8462V14.4659L16.1538 18.9992V13.6H18.4615V24.9333H16.1538V24.0675L13.8462 19.5341Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+
+              <!-- File Name and 3-Dot Icon -->
+              <div class="relative flex items-center justify-between w-full">
+                <span class="text-xs">Filename.png</span>
+                <div class="relative group">
+                  <svg
+                    class="w-6 h-6 text-gray-800 cursor-pointer"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      d="M6 12h.01m6 0h.01m5.99 0h.01"
+                    />
+                  </svg>
+
+                  <!-- Download/Delete Modal on Hover -->
+                  <div
+                    class="absolute right-0 border border-gray-200 w-28 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  >
+                    <button
+                      class="w-full px-4 py-2 text-left text-blue-600 hover:bg-gray-100"
+                      onclick="downloadFile()"
+                    >
+                      Download
+                    </button>
+                    <button
+                      class="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+                      onclick="deleteFile()"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+       <!-- Drag & Drop Upload Section -->
+<section class="border-2 border-dashed border-blue-500 bg-blue-100 flex flex-col items-center justify-center gap-2 rounded-lg py-8 text-center mb-8">
+  <svg
+    width="28"
+    height="34"
+    viewBox="0 0 28 34"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M14 0.333252V11.1666C14 11.7881 14.2315 12.3872 14.6494 12.8473C15.0672 13.3073 15.6414 13.5953 16.26 13.6549L16.5 13.6666H27.3333V30.3333C27.3336 31.1742 27.016 31.9842 26.4442 32.6008C25.8723 33.2175 25.0886 33.5952 24.25 33.6583L24 33.6666H3.99999C3.15903 33.6669 2.34905 33.3492 1.73241 32.7774C1.11577 32.2056 0.738062 31.4218 0.67499 30.5833L0.666657 30.3333V3.66659C0.666391 2.82562 0.984001 2.01564 1.55582 1.39901C2.12764 0.78237 2.9114 0.404657 3.74999 0.341585L3.99999 0.333252H14ZM12.8217 15.6216L9.28666 19.1566C9.12747 19.3103 9.0005 19.4942 8.91315 19.6976C8.82581 19.9009 8.77983 20.1196 8.77791 20.3409C8.77598 20.5622 8.81815 20.7817 8.90195 20.9865C8.98575 21.1913 9.10951 21.3774 9.266 21.5339C9.42249 21.6904 9.60857 21.8142 9.8134 21.898C10.0182 21.9818 10.2377 22.0239 10.459 22.022C10.6803 22.0201 10.899 21.9741 11.1023 21.8868C11.3057 21.7994 11.4896 21.6724 11.6433 21.5133L12.3333 20.8233V25.3333C12.3333 25.7753 12.5089 26.1992 12.8215 26.5118C13.134 26.8243 13.558 26.9999 14 26.9999C14.442 26.9999 14.8659 26.8243 15.1785 26.5118C15.4911 26.1992 15.6667 25.7753 15.6667 25.3333V20.8233L16.3567 21.5133C16.5104 21.6724 16.6943 21.7994 16.8976 21.8868C17.101 21.9741 17.3197 22.0201 17.541 22.022C17.7623 22.0239 17.9818 21.9818 18.1866 21.898C18.3914 21.8142 18.5775 21.6904 18.734 21.5339C18.8905 21.3774 19.0142 21.1913 19.098 20.9865C19.1818 20.7817 19.224 20.5622 19.2221 20.3409C19.2201 20.1196 19.1742 19.9009 19.0868 19.6976C18.9995 19.4942 18.8725 19.3103 18.7133 19.1566L15.18 15.6216C15.0252 15.4666 14.8414 15.3437 14.6391 15.2598C14.4367 15.1759 14.2198 15.1328 14.0008 15.1328C13.7818 15.1328 13.5649 15.1759 13.3626 15.2598C13.1603 15.3437 12.9764 15.4666 12.8217 15.6216ZM17.3333 0.404919C17.8723 0.519335 18.3745 0.765567 18.795 1.12159L19 1.30992L26.3567 8.66658C26.7472 9.05677 27.0347 9.53784 27.1933 10.0666L27.26 10.3333H17.3333V0.404919Z"
+      fill="#605BFF"
+    />
+  </svg>
+
+  <input type="file" id="fileInput" class="hidden" />
+  <p class="text-gray-500 mt-4">
+    Drag and drop files, or
+    <a href="#" id="uploadLink" class="text-blue-500 underline">browse here</a>
+  </p>
+  <p class="text-sm text-gray-400">Supports docs, pdf, xls, png</p>
+</section>
+
+<!-- Files Table -->
+<section>
+  <h3 class="text-lg mb-4">Your Files</h3>
+  <div class="overflow-x-auto border border-gray-200 rounded-lg ">
+    <table class="min-w-full bg-white border border-gray-200">
+      <thead class="bg-gray-100 text-gray-600">
+        <tr class="text-left">
+          <th class="p-4 whitespace-nowrap">Name</th>
+          <th class="p-4 whitespace-nowrap">Location</th>
+          <th class="p-4 whitespace-nowrap">Owner</th>
+          <th class="p-4 whitespace-nowrap">File Size</th>
+          <th class="p-4 whitespace-nowrap">Upload Date</th>
+          <th class="p-4 whitespace-nowrap">Action</th>
+        </tr>
+      </thead>
+      <tbody id="fileTableBody" class="text-gray-700">
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+
+
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-4">
+              <p class="text-gray-600"></p>
+              <div class="flex items-center space-x-1">
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  3
+                </button>
+                <span class="px-3 py-1 text-gray-600">...</span>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  5
+                </button>
+                <button
+                  class="px-3 py-1 bg-white border border-gray-300 rounded-md text-gray-600"
+                >
+                  &gt;
+                </button>
+              </div>
+            </div>
+
+      </div>
+    </div>
+
+    <script src="upload_bulk_script.js"></script>
+  </body>
+</html>
