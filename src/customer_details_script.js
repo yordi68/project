@@ -71,22 +71,26 @@ const activities = [
 ];
 
 // Function to create log HTML
-const createLogHTML = (activity) => {
-    const iconColor = activity.type === 'paid' ? 'bg-green-500' : 'bg-gray-300';
-    const textColor = activity.type === 'paid' ? 'text-green-600' : 'text-gray-600';
+const createLogHTML = (activity, index, totalActivities) => {
+  const iconColor = activity.type === 'paid' ? 'bg-green-500' : 'bg-gray-300';
+  const textColor = activity.type === 'paid' ? 'text-green-600' : 'text-gray-600';
 
-    return `
+  return `
       <div class="flex space-x-4 items-start">
-        <div class="mt-1">
-          <div class="${iconColor} w-5 h-5 rounded-full flex items-center justify-center">
+        <div class="mt-1 relative">
+          <div class="${iconColor} w-6 h-6 rounded-full flex items-center justify-center">
             ${activity.type === 'paid' ?
-            `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+      `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 4.293a1 1 0 00-1.414 0L8 11.586 4.707 8.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd" />
               </svg>`
-            : `<span class="${textColor} font-semibold">+</span>`}
+      : `<span class="${textColor} font-semibold">+</span>`}
           </div>
+          <!-- Add vertical line conditionally except for the last item -->
+          ${index !== totalActivities - 1 ?
+      `<div class="absolute top-8 left-2 bg-gray-300 w-[1px] h-8"></div>`
+      : ''}
         </div>
-        <div>
+        <div class="flex flex-col gap-2">
           <p>${activity.message}</p>
           <p class="text-gray-500 text-sm">${activity.timestamp}</p>
         </div>
@@ -94,10 +98,11 @@ const createLogHTML = (activity) => {
     `;
 };
 
+
 // Render logs
 const activityLog = document.getElementById('activity-log');
-activities.forEach(activity => {
-    activityLog.innerHTML += createLogHTML(activity);
+activities.forEach((activity, index) => {
+  activityLog.innerHTML += createLogHTML(activity, index, activities.length);
 });
 
 
