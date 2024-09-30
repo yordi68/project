@@ -85,7 +85,7 @@ const createLogHTML = (activity, index, totalActivities) => {
               </svg>`
       : `<span class="${textColor} font-semibold">+</span>`}
           </div>
-          <!-- Add vertical line conditionally except for the last item -->
+          <!-- Add vertical line conditionally except for the last item -->   
           ${index !== totalActivities - 1 ?
       `<div class="absolute top-8 left-2 bg-gray-300 w-[1px] h-8"></div>`
       : ''}
